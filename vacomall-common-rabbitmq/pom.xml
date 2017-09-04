@@ -5,15 +5,5 @@
     <artifactId>vacomall-parent</artifactId>
     <version>1.0-SNAPSHOT</version>
   </parent>
-  <artifactId>vacomall-common-service</artifactId>
-  
-  <dependencies>
-  
-  		<dependency>
-            <groupId>com.vacomall</groupId>
-            <artifactId>vacomall-common-lib</artifactId>
-        </dependency>
-  	
-  </dependencies>
-  
+  <artifactId>vacomall-common-rabbitmq</artifactId>
 </project>

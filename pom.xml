@@ -15,9 +15,16 @@
 
 		<module>vacomall-common</module>
 		<module>vacomall-common-config</module>
-		<module>vacomall-service-redis</module>
-		<module>vacomall-service-rabbitmq</module>
 		<module>vacomall-common-service</module>
+		<module>vacomall-common-sms</module>
+		<module>vacomall-common-ses</module>
+		<module>vacomall-common-redis</module>
+		<module>vacomall-common-rabbitmq</module>
+		<module>vacomall-common-upload</module>
+		<module>vacomall-common-lib</module>
+		
+		<module>vacomall-service-test</module>
+		
 	</modules>
 	<packaging>pom</packaging>
 
@@ -99,6 +106,42 @@
 			<dependency>
 				<groupId>com.vacomall</groupId>
 				<artifactId>vacomall-common-config</artifactId>
+				<version>${vacomall.version}</version>
+			</dependency>
+			
+			<dependency>
+				<groupId>com.vacomall</groupId>
+				<artifactId>vacomall-common-lib</artifactId>
+				<version>${vacomall.version}</version>
+			</dependency>
+			
+			<dependency>
+				<groupId>com.vacomall</groupId>
+				<artifactId>vacomall-common-redis</artifactId>
+				<version>${vacomall.version}</version>
+			</dependency>
+			
+			<dependency>
+				<groupId>com.vacomall</groupId>
+				<artifactId>vacomall-common-rabbitmq</artifactId>
+				<version>${vacomall.version}</version>
+			</dependency>
+			
+			<dependency>
+				<groupId>com.vacomall</groupId>
+				<artifactId>vacomall-common-sms</artifactId>
+				<version>${vacomall.version}</version>
+			</dependency>
+			
+			<dependency>
+				<groupId>com.vacomall</groupId>
+				<artifactId>vacomall-common-ses</artifactId>
+				<version>${vacomall.version}</version>
+			</dependency>
+			
+			<dependency>
+				<groupId>com.vacomall</groupId>
+				<artifactId>vacomall-common-upload</artifactId>
 				<version>${vacomall.version}</version>
 			</dependency>
 
