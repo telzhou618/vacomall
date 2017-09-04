@@ -25,15 +25,18 @@ public class BaseTest extends AbstractJUnit4SpringContextTests {
 	private EMailService emailService;
 	
 	/**
-	 * 测试件
+	 * 测试Redis
 	 */
 	@Test
-	public void testRediss() {
+	public void testRedis() {
 		jedisClient.set("test_key", "hello world");
 		Assert.notNull(jedisClient.get("test_key"));
 		System.out.println("#### redis server test ok .");
 	}
-
+	
+	/**
+	 * 测试Email
+	 */
 	@Test
 	public void testEmail() {
 		MailParam mailParam = new MailParam("274410087@qq.com", "测试邮件标题", "测试邮件内容");
