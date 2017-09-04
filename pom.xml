@@ -17,14 +17,15 @@
 		<module>vacomall-common-config</module>
 		<module>vacomall-common-service</module>
 		<module>vacomall-common-sms</module>
-		<module>vacomall-common-ses</module>
+		
 		<module>vacomall-common-redis</module>
 		<module>vacomall-common-rabbitmq</module>
 		<module>vacomall-common-upload</module>
 		<module>vacomall-common-lib</module>
 		
 		<module>vacomall-service-test</module>
-		
+
+		<module>vacomall-common-email</module>
 	</modules>
 	<packaging>pom</packaging>
 
@@ -135,7 +136,7 @@
 			
 			<dependency>
 				<groupId>com.vacomall</groupId>
-				<artifactId>vacomall-common-ses</artifactId>
+				<artifactId>vacomall-common-email</artifactId>
 				<version>${vacomall.version}</version>
 			</dependency>
 			

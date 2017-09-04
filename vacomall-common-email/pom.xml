@@ -6,28 +6,20 @@
 		<artifactId>vacomall-parent</artifactId>
 		<version>1.0-SNAPSHOT</version>
 	</parent>
-	<artifactId>vacomall-service-test</artifactId>
+	<artifactId>vacomall-common-email</artifactId>
+
 	<dependencies>
 
 		<dependency>
 			<groupId>com.vacomall</groupId>
-			<artifactId>vacomall-common-redis</artifactId>
-		</dependency>
-		
-		<dependency>
-			<groupId>com.vacomall</groupId>
-			<artifactId>vacomall-common-email</artifactId>
+			<artifactId>vacomall-common-lib</artifactId>
 		</dependency>
 
+		<!-- 邮件发送 -->
 		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
+			<groupId>javax.mail</groupId>
+			<artifactId>mail</artifactId>
 		</dependency>
-		
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-test</artifactId>
-		</dependency>
-
 	</dependencies>
+
 </project>
