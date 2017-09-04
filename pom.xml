@@ -17,6 +17,7 @@
 		<module>vacomall-common-config</module>
 		<module>vacomall-service-redis</module>
 		<module>vacomall-service-rabbitmq</module>
+		<module>vacomall-common-service</module>
 	</modules>
 	<packaging>pom</packaging>
 
@@ -88,37 +89,43 @@
 				<artifactId>vacomall-common</artifactId>
 				<version>${vacomall.version}</version>
 			</dependency>
-			
+
 			<dependency>
 				<groupId>com.vacomall</groupId>
 				<artifactId>vacomall-common-web</artifactId>
 				<version>${vacomall.version}</version>
 			</dependency>
-			
+
 			<dependency>
 				<groupId>com.vacomall</groupId>
 				<artifactId>vacomall-common-config</artifactId>
 				<version>${vacomall.version}</version>
 			</dependency>
-			
+
 			<dependency>
 				<groupId>com.vacomall</groupId>
 				<artifactId>vacomall-common-web</artifactId>
 				<version>${vacomall.version}</version>
 			</dependency>
-			
+
+			<dependency>
+				<groupId>com.vacomall</groupId>
+				<artifactId>vacomall-common-service</artifactId>
+				<version>${vacomall.version}</version>
+			</dependency>
+
 			<dependency>
 				<groupId>com.vacomall</groupId>
 				<artifactId>vacomall-service-rabbitmq</artifactId>
 				<version>${vacomall.version}</version>
 			</dependency>
-			
+
 			<dependency>
 				<groupId>com.vacomall</groupId>
 				<artifactId>vacomall-service-redis</artifactId>
 				<version>${vacomall.version}</version>
 			</dependency>
-			
+
 			<!-- 邮件发送 -->
 			<dependency>
 				<groupId>javax.mail</groupId>
@@ -304,7 +311,6 @@
 				<groupId>junit</groupId>
 				<artifactId>junit</artifactId>
 				<version>${junit.version}</version>
-				<scope>test</scope>
 			</dependency>
 			<!-- 日志处理 -->
 			<dependency>
@@ -522,7 +528,6 @@
 				<groupId>org.hamcrest</groupId>
 				<artifactId>hamcrest-all</artifactId>
 				<version>1.3</version>
-				<scope>test</scope>
 			</dependency>
 
 			<dependency>
