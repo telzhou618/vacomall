@@ -27,6 +27,12 @@
     <dubbo:protocol name="dubbo"  dispatcher="all" threadpool="fixed" threads="20" port="28883" />
 
     <!-- 声明需要暴露的服务接口 -->
-    <dubbo:service  retries="0" interface="com.vacomall.system.i.ISysLogService" ref="sysLogServiceImpl"  />
+    <dubbo:service  interface="com.vacomall.system.i.ISysLogService" ref="sysLogServiceImpl"  />
+    <dubbo:service  interface="com.vacomall.system.i.ISysMenuService" ref="sysMenuServiceImpl"  />
+    <dubbo:service  interface="com.vacomall.system.i.ISysRoleMenuService" ref="sysRoleMenuServiceImpl"  />
+    <dubbo:service  interface="com.vacomall.system.i.ISysRoleService" ref="sysRoleServiceImpl"  />
+    <dubbo:service  interface="com.vacomall.system.i.ISysSettingService" ref="sysSettingServiceImpl"  />
+    <dubbo:service  interface="com.vacomall.system.i.ISysUserRoleService" ref="sysUserRoleServiceImpl"  />
+    <dubbo:service  interface="com.vacomall.system.i.ISysUserService" ref="sysUserServiceImpl"  />
 
 </beans>

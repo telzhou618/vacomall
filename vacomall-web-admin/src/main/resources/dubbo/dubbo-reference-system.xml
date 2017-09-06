@@ -1,12 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
         http://www.springframework.org/schema/beans/spring-beans.xsd
         http://code.alibabatech.com/schema/dubbo
         http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
 
-    <!-- 引用远程服务接口 -->
-    <dubbo:reference id="sysLogService"
-                     interface=" com.vacomall.system.i.ISysLogService" check="false" />
+	<!-- 引用远程服务接口 -->
+	<dubbo:reference id="sysLogService" interface=" com.vacomall.system.i.ISysLogService" check="false" />
+	<dubbo:reference id="sysMenuService" interface="com.vacomall.system.i.ISysMenuService" check="false" />
+	<dubbo:reference id="sysRoleMenuService" interface="com.vacomall.system.i.ISysRoleMenuService" check="false" />
+	<dubbo:reference id="sysRoleService" interface="com.vacomall.system.i.ISysRoleService" check="false" />
+	<dubbo:reference id="sysSettingService" interface="com.vacomall.system.i.ISysSettingService" check="false" />
+	<dubbo:reference id="sysUserRoleService" interface="com.vacomall.system.i.ISysUserRoleService" check="false" />
+	<dubbo:reference id="sysUserService" interface="com.vacomall.system.i.ISysUserService" check="false" />
 
 </beans>

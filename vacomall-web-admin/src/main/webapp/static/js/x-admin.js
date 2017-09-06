@@ -1,6 +1,6 @@
 layui.use(['element'], function(){
 	$ = layui.jquery;
-  	element = layui.element(); 
+  	element = layui.element; 
   
   //导航的hover效果、二级菜单等功能，需要依赖element模块
   // 侧边栏点击隐藏兄弟元素
@@ -38,7 +38,6 @@ layui.use(['element'], function(){
   	element.on('nav(side)', function(elem){
     	title = elem.find('cite').text();
     	url = elem.find('a').attr('_href');
-    	// alert(url);
 
     	for (var i = 0; i <$('.x-iframe').length; i++) {
     		if($('.x-iframe').eq(i).attr('src')==url){
@@ -46,12 +45,11 @@ layui.use(['element'], function(){
     			return;
     		}
     	};
-
     	res = element.tabAdd('x-tab', {
-	        title: title//用于演示
+    		 id:$('.x-iframe').length || 0,
+	         title: title//用于演示
 	        ,content: '<iframe frameborder="0" src="'+url+'" class="x-iframe"></iframe>'
 		    });
-
 
 		element.tabChange('x-tab', $('.layui-tab-title li').length-1);
 

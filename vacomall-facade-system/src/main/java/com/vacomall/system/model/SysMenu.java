@@ -40,7 +40,7 @@ public class SysMenu extends Model<SysMenu> {
     /**
      * 图标
      */
-	private String iconCls;
+	private String icon;
     /**
      * 排序
      */
@@ -100,12 +100,12 @@ public class SysMenu extends Model<SysMenu> {
 		this.url = url;
 	}
 
-	public String getIconCls() {
-		return iconCls;
+	public String getIcon() {
+		return icon;
 	}
 
-	public void setIconCls(String iconCls) {
-		this.iconCls = iconCls;
+	public void setIcon(String icon) {
+		this.icon = icon;
 	}
 
 	public Integer getSort() {

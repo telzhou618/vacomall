@@ -8,7 +8,7 @@
 		<result column="text" property="text" />
 		<result column="pid" property="pid" />
 		<result column="url" property="url" />
-		<result column="iconCls" property="iconCls" />
+		<result column="icon" property="icon" />
 		<result column="sort" property="sort" />
 		<result column="deep" property="deep" />
 		<result column="code" property="code" />
