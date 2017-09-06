@@ -15,7 +15,7 @@ import com.vacomall.email.EMailService;
 import com.vacomall.email.MailParam;
 import com.vacomall.redis.JedisClient;
 
-@ContextConfiguration(locations = { "classpath*:*.xml" })
+@ContextConfiguration(locations = { "classpath:spring-context.xml" })
 public class BaseTest extends AbstractJUnit4SpringContextTests {
 
 	@Autowired

@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+	<context:component-scan base-package="com.vacomall.controller" />
+
+	<mvc:resources location="/static/" mapping="/static/**" />
+
+	<mvc:annotation-driven />
+
+	<!-- spring 加载配置文件 -->
+	<bean
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="locations">
+			<array>
+				<value>classpath:resource/resource.properties</value>
+				<value>classpath:resource/freemarker.properties</value>
+			</array>
+		</property>
+	</bean>
+
+	<bean id="freemarkerConfiguration"
+		class="org.springframework.beans.factory.config.PropertiesFactoryBean">
+		<property name="location" value="classpath:resource/freemarker.properties" />
+
+	</bean>
+
+	<bean
+		class="org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver"
+		p:suffix=".html">
+		<property name="cache" value="false" />
+		<property name="viewClass"
+			value="org.springframework.web.servlet.view.freemarker.FreeMarkerView" />
+		<property name="contentType" value="text/html;charset=UTF-8"></property>
+		<property name="exposeRequestAttributes" value="true" />
+		<property name="exposeSessionAttributes" value="true" />
+		<property name="exposeSpringMacroHelpers" value="true" />
+		<property name="requestContextAttribute" value="request" />
+		<property name="order" value="0"></property>
+	</bean>
+
+	<bean id="fmXmlEscape" class="freemarker.template.utility.XmlEscape" />
+	<!-- <bean id="freemarkerConfig" class="org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer"> -->
+
+	<bean id="freemarkerConfig"
+		class="org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer">
+		<property name="templateLoaderPath" value="/WEB-INF/views/" />
+		<property name="defaultEncoding" value="UTF-8" />
+		<property name="freemarkerVariables">
+			<map>
+				<entry key="xml_escape" value-ref="fmXmlEscape" />
+				<entry key="S_COMMON_URL" value="${COMMON_URL}"></entry>
+				<entry key="MANAGER_URL" value="${MANAGER_URL}"></entry>
+				<entry key="SHOP_URL" value="${SHOP_URL}"></entry>
+				<entry key="SHOP_REST_URL" value="${SHOP_REST_URL}"></entry>
+				<entry key="SELLER_URL" value="${SELLER_URL}"></entry>
+			</map>
+		</property>
+		<property name="freemarkerSettings" ref="freemarkerConfiguration">
+		</property>
+	</bean>
+
+	<!-- 定义文件上传解析器 -->
+	<bean id="multipartResolver"
+		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<!-- 设定默认编码 -->
+		<property name="defaultEncoding" value="UTF-8"></property>
+		<!-- 设定文件上传的最大值5MB，5*1024*1024 -->
+		<property name="maxUploadSize" value="5242880"></property>
+	</bean>
+
+</beans>

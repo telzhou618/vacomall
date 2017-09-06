@@ -9,6 +9,13 @@
 	<artifactId>vacomall-common-web</artifactId>
 
 	<dependencies>
+		
+		<!-- base common -->
+		<dependency>
+			<groupId>com.vacomall</groupId>
+			<artifactId>vacomall-common</artifactId>
+		</dependency>
+		
 		<!-- Spring -->
 		<dependency>
 			<groupId>org.springframework</groupId>
@@ -26,14 +33,8 @@
 		<dependency>
 			<groupId>javax.servlet</groupId>
 			<artifactId>servlet-api</artifactId>
-			<scope>provided</scope>
 		</dependency>
-
-		<dependency>
-			<groupId>org.apache.commons</groupId>
-			<artifactId>commons-lang3</artifactId>
-		</dependency>
-
+		
 		<!-- 日志处理 -->
 		<dependency>
 			<groupId>org.slf4j</groupId>
@@ -56,15 +57,22 @@
 			<groupId>org.csource</groupId>
 			<artifactId>fastdfs-client-java</artifactId>
 		</dependency>
-
+		
+		<!--freemarker  -->
 		<dependency>
 			<groupId>org.freemarker</groupId>
 			<artifactId>freemarker</artifactId>
 		</dependency>
-
+		<!-- dubbo -->
 		<dependency>
 			<groupId>com.alibaba</groupId>
 			<artifactId>dubbo</artifactId>
+		</dependency>
+
+		<!-- zkclient -->
+		<dependency>
+			<groupId>com.github.sgroschupf</groupId>
+			<artifactId>zkclient</artifactId>
 		</dependency>
 
 		<!-- 文件上传组件 -->
@@ -72,6 +80,12 @@
 			<groupId>commons-fileupload</groupId>
 			<artifactId>commons-fileupload</artifactId>
 		</dependency>
+		<!-- disconf -->
+		<dependency>
+			<groupId>com.baidu.disconf</groupId>
+			<artifactId>disconf-client</artifactId>
+		</dependency>
+
 
 	</dependencies>
 

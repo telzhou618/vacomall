@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.vacomall.system.mapper.SysMenuMapper">
+
+	<!-- 通用查询映射结果 -->
+	<resultMap id="BaseResultMap" type="com.vacomall.system.model.SysMenu">
+		<id column="id" property="id" />
+		<result column="text" property="text" />
+		<result column="pid" property="pid" />
+		<result column="url" property="url" />
+		<result column="iconCls" property="iconCls" />
+		<result column="sort" property="sort" />
+		<result column="deep" property="deep" />
+		<result column="code" property="code" />
+		<result column="xtype" property="xtype" />
+		<result column="resource" property="resource" />
+		<result column="glyph" property="glyph" />
+	</resultMap>
+	
+	<select id="selectMenuByUid" resultType="java.util.HashMap">
+			SELECT
+			m.*
+			FROM `sys_menu` m
+			WHERE m.`pid` = #{pid}
+			AND m.`id` IN (
+				SELECT  DISTINCT rm.`menuId` FROM sys_user_role ur 
+				LEFT JOIN sys_role_menu rm ON ur.`roleId` = rm.`roleId`
+				WHERE ur.`userId` = #{uid}
+			)
+			ORDER BY code ASC
+	</select>
+	
+	<select id="selectResourceByUid" resultType="java.lang.String">
+			SELECT  DISTINCT m.`resource` FROM sys_user_role ur 
+			LEFT JOIN sys_role_menu rm ON ur.`roleId` = rm.`roleId`
+			LEFT JOIN sys_menu m ON m.`id` = rm.`menuId`
+			WHERE ur.`userId` = #{uid}
+			AND m.`resource` IS NOT NULL
+			AND m.`resource` != ''
+			AND m.deep=3
+	</select>
+	
+</mapper>

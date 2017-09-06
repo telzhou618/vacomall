@@ -9,10 +9,44 @@
 	<artifactId>vacomall-common-email</artifactId>
 
 	<dependencies>
-
+		<!-- base common -->
 		<dependency>
 			<groupId>com.vacomall</groupId>
-			<artifactId>vacomall-common-lib</artifactId>
+			<artifactId>vacomall-common</artifactId>
+		</dependency>
+
+		<!-- Spring base -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-core</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-beans</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context-support</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-jdbc</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-aspects</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-jms</artifactId>
 		</dependency>
 
 		<!-- 邮件发送 -->

@@ -8,7 +8,12 @@
 	</parent>
 	<artifactId>vacomall-service-test</artifactId>
 	<dependencies>
-
+		
+		<dependency>
+			<groupId>com.vacomall</groupId>
+			<artifactId>vacomall-common-service</artifactId>
+		</dependency>
+	
 		<dependency>
 			<groupId>com.vacomall</groupId>
 			<artifactId>vacomall-common-redis</artifactId>
@@ -22,11 +27,13 @@
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
+			<scope>test</scope>
 		</dependency>
 		
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-test</artifactId>
+			<scope>test</scope>
 		</dependency>
 
 	</dependencies>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.vacomall.system.mapper.SysRoleMenuMapper">
+
+	<!-- 通用查询映射结果 -->
+	<resultMap id="BaseResultMap" type="com.vacomall.system.model.SysRoleMenu">
+		<id column="id" property="id" />
+		<result column="roleId" property="roleId" />
+		<result column="menuId" property="menuId" />
+	</resultMap>
+
+	<select id="selectAuthByRoleId" resultType="java.util.HashMap"
+		parameterType="java.lang.String">
+		SELECT
+		m.id,
+		m.pid AS pId,
+		m.`menuName` AS `name`,
+		IF(m.`deep` &lt; 3,TRUE,FALSE) AS isParent,
+		IF(m.`deep`=1,TRUE,FALSE) AS `open`,
+		t.menuId,
+		IF(t.menuId IS
+		NOT NULL,TRUE,FALSE) AS `checked`
+		FROM `sys_menu` m
+		LEFT JOIN (SELECT * FROM `sys_role_menu` rm WHERE
+		rm.roleId = #{roleId}) t
+		ON t.menuId = m.`id`
+	</select>
+
+
+</mapper>
