@@ -1,0 +1,37 @@
+<#include "/common/layout.html"/>
+<@head>
+</@head>
+<@body>
+    <div class="x-body">
+        <form class="layui-form" style="padding-bottom: 10px;text-align: left;">
+			     关键词：
+			  <div class="layui-inline">
+			    <input class="layui-input" type="text" name="search" size="30" autocomplete="off" placeholder="日志标题、内容、用户、参数">
+			  </div>
+	 	 <button class="layui-btn"  lay-submit lay-filter="search"><i class="layui-icon">&#xe615;</i></button>
+		</form>
+
+		<table class="layui-table" lay-data="{height:'full-230', url:'/log/json', page:true, id:'table',limit:20}" lay-filter="table">
+		  <thead>
+		    <tr>
+		      <th lay-data="{checkbox:true, fixed: true}"></th>
+		      <th lay-data="{field:'userName', width:150}">用户名</th>
+		      <th lay-data="{field:'logTitle', width:100}">日志标题</th>
+		      <th lay-data="{field:'logContent', width:200}">日志内容</th>
+		      <th lay-data="{field:'clientIp', width:150}">客户端IP</th>
+		      <th lay-data="{field:'requestUrl', width:180}">请求地址</th>
+		      <th lay-data="{field:'requestMethod', width:80}">请求方法</th>
+		      <th lay-data="{field:'logTime', width:180}">记录时间</th>
+		      <th lay-data="{fixed: 'right', width:200, align:'center', toolbar: '#row-bar'}">操作</th>
+		    </tr>
+		  </thead>
+		</table>
+
+		<script type="text/html" id="row-bar">
+ 			<a class="layui-btn layui-btn-small" lay-event="view" data-url="/log/detail" data-title="日志参数" data-width="800" data-height="600" ><i class="layui-icon">&#xe642;</i> 日志参数</a>
+		</script>
+    </div>
+</@body>
+<@footer>
+	<script src="/static/js/x-table.js" charset="utf-8"></script>
+</@footer>

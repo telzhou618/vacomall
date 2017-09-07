@@ -22,7 +22,12 @@ public class IndexController {
 	
 	@Autowired private ISysMenuService sysMenuService;
 	
-	@RequestMapping("/")
+	/**
+	 * 首页
+	 * @param model
+	 * @return
+	 */
+	@RequestMapping({"/","/index"})
 	public String main(Model model){
 		List<Map<String,Object>> listMap = sysMenuService.selectMaps(new EntityWrapper<SysMenu>().eq("pid","0").orderBy("code"));
 		for(Map<String, Object> map : listMap){
@@ -32,11 +37,16 @@ public class IndexController {
 		model.addAttribute("systemName","VACOMALL" );
 		model.addAttribute("listMap", listMap);
 		
-		return "main";
+		return "index";
 	}
 	
-	@RequestMapping("/index")
-	public String index(Model model){
-		return "index";
+	/**
+	 * 欢迎页面
+	 * @param model
+	 * @return
+	 */
+	@RequestMapping("/welcome")
+	public String welcome(Model model){
+		return "welcome";
 	}
 }

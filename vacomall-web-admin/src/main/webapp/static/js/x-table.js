@@ -40,6 +40,8 @@ layui.use(['table','element','form'], function(){
 	      //编辑
 	     } else if(obj.event === 'edit'){
 	    	x_admin_show(title,url+'?id='+data.id,width,height);
+	    } else {
+	    	x_admin_show(title,url+'?id='+data.id,width,height);
 	    }
 	  });
 	 
