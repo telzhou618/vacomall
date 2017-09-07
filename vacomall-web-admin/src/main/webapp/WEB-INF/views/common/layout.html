@@ -1,0 +1,19 @@
+<#macro head>
+<!DOCTYPE html>
+<html>
+<head>
+	<#include "/common/head.html"/>      
+<#nested>
+</head>
+</#macro>
+<#macro body>
+<body>
+	<#nested>
+</#macro>
+<#macro footer>
+	<script src="/static/lib/layui/layui.js" charset="utf-8"></script>
+    <script src="/static/js/x-layui.js" charset="utf-8"></script>
+	<#nested>
+</body>
+</html>
+</#macro>

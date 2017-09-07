@@ -1,0 +1,68 @@
+<#include "/common/layout.html"/>
+<@head>
+</@head>
+<@body>
+	<div class="x-body">
+        <form class="layui-form layui-form-pane" action="/user/doEdit">
+        	 <input type="hidden" name="id" value="${sysUser.id}">
+             <div class="layui-form-item">
+                 <label for="L_title" class="layui-form-label">用户名</label>
+                 <div class="layui-input-block">
+                     <input type="text" id="L_title" name="userName" value="${sysUser.userName}" readonly="readonly" lay-verify="required" placeholder="请输入用户名"
+                     autocomplete="off" class="layui-input">
+                 </div>
+             </div>
+             <div class="layui-form-item">
+                 <label  class="layui-form-label">密码</label>
+                 <div class="layui-input-block">
+                     <input type="password" id="password" name="password"  placeholder="密码为空则不修改密码"
+                     autocomplete="off" class="layui-input">
+                 </div>
+             </div>
+             <div class="layui-form-item">
+                 <label class="layui-form-label">重复密码</label>
+                 <div class="layui-input-block">
+                     <input type="password"  name="confPassword" lay-verify="regPwd" placeholder="重复输入密码"
+                     autocomplete="off" class="layui-input">
+                 </div>
+             </div>
+             <div class="layui-form-item" pane>
+	    		<label class="layui-form-label">状态</label>
+			    <div class="layui-input-block">
+			      <input type="checkbox" name="state" lay-skin="switch" lay-text="启用|禁止" <#if sysUser.userState==1> checked </#if> >
+			    </div>
+		 	 </div>
+		 	 <div class="layui-form-item">
+			    <label class="layui-form-label">描述</label>
+			    <div class="layui-input-block">
+			      <textarea name="userDesc" placeholder="请输入描述"  class="layui-textarea">${sysUser.userDesc}</textarea>
+			   </div>
+	 		</div>
+	     <div class="layui-form-item">
+		    <div class="layui-input-block">
+		      <button class="layui-btn" lay-submit lay-filter="submit">立即提交</button>
+		      <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+		    </div>
+		  </div>
+      </form>
+    </div>
+</@body>
+<@footer>
+<script src="/static/js/x-form.js" charset="utf-8"></script>
+<script type="text/javascript"> 
+ layui.use(['form','layer'], function(){
+     var $ = layui.jquery,
+     	form = layui.form;
+     //重复密码验证
+     form.verify({
+			regPwd: function(value) {
+				//获取密码
+				var pwd = $("#password").val();
+				if(!new RegExp(pwd).test(value)) {
+					return '两次输入的密码不一致';
+				}
+			}
+		});
+     });        
+</script>
+</@footer>

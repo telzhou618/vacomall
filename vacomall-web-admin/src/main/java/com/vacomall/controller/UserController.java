@@ -1,10 +1,15 @@
 package com.vacomall.controller;
 
+import java.util.Arrays;
 import java.util.Date;
 
 import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang3.ArrayUtils;
+import org.apache.commons.lang3.BooleanUtils;
+import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -27,19 +32,21 @@ public class UserController extends AdminController{
 
 	@Autowired private ISysUserService sysUserService;
 	
+	/**
+	 * 列表视图
+	 * @return
+	 */
 	@RequestMapping("/list")
 	public String list () {
 		return "user/user-list";
 	}
-	
+
 	/**
-	 * JSON分页数据
-	 * @param start
+	 * Json 分页查询JSON数据
+	 * @param page
 	 * @param size
 	 * @param search
-	 * @param sort
-	 * @param order
-	 * @param model
+	 * @param userState
 	 * @return
 	 */
 	@ResponseBody
@@ -47,64 +54,67 @@ public class UserController extends AdminController{
 	public Rest json (
 			@RequestParam(value="page",defaultValue="1") Integer page,
 			@RequestParam(value="limit",defaultValue="10") Integer size,
-			@RequestParam(value="key[search]",required=false) String search) {
+			@RequestParam(value="key[search]",required=false) String search,
+		@RequestParam(value="key[userState]",required=false) Integer userState) {
 		
 		EntityWrapper<SysUser> ew = new EntityWrapper<SysUser>();
+		ew.orderBy("createTime", false);
 		if(StringUtils.isNotBlank(search)){
 			ew.like("userName", search);
+		}
+		if(userState!=null){
+			ew.eq("userState", userState);
 		}
 		Page<SysUser> pageData = sysUserService.selectPage(new Page<SysUser>(page, size),ew);
 		return Rest.okCountData(pageData.getTotal(),pageData.getRecords());
 	}
 	
+	/**
+	 * 新增视图
+	 * @return
+	 */
 	@RequestMapping("/add")
 	public String add(){
 		return "user/user-add";
 	}
 	
 	/**
-	 * 执行新增用户
+	 * 执行新增
 	 * @param sysUser
+	 * @param confPassword
+	 * @param state
+	 * @param rids
 	 * @return
-	 * @throws InterruptedException 
 	 */
 	@ResponseBody
 	@RequestMapping("/doAdd")
-	public Rest doAdd(SysUser sysUser,String confPassword, String[] rids){
+	public Rest doAdd(SysUser sysUser,String confPassword,Boolean state, String[] rids){
 		if(!confPassword.equals(sysUser.getPassword())){
 			return Rest.failure("两次输入的密码不一致");
 		}
 		if(sysUserService.selectCount(new EntityWrapper<SysUser>().eq("userName", sysUser.getUserName())) > 0){
 			return Rest.failure("用户名["+sysUser.getUserName()+"]已存在");
 		}
+		if(BooleanUtils.isTrue(state)){
+			sysUser.setUserState(SysUser._1);
+		}else{
+			sysUser.setUserState(SysUser._0);
+		}
 		sysUser.setCreateTime(new Date());
 		sysUser.setPassword(BaseUtil.md51024Pwd(sysUser.getPassword(), sysUser.getUserName()));
 		sysUserService.addUser(sysUser, rids);
 		return Rest.ok();
 	}
-	/*
-	*//**
-	 * 执行编辑用户
-	 * @param id
-	 * @param model
-	 * @return
-	 * @throws InterruptedException 
-	 *//*
-	@RequiresPermissions("user:edit")
-	@RequestMapping("/edit")
-	public Rest edit(SysUser sysUser,String[] rids){
-		sysUserService.updateUser(sysUser, rids);
-		return Rest.ok();
-	}
 	
-	*//**
-	 * 删除
-	 * @param id
+	/**
+	 * 执行删除
+	 * @param ids
 	 * @return
-	 *//*
+	 */
+	@ResponseBody
 	@RequiresPermissions("user:delete")
 	@RequestMapping("/delete")
-	public Rest delete(@RequestParam("ids") String[] ids){
+	public Rest delete(@RequestParam("ids[]") String[] ids){
 		if(ArrayUtils.isEmpty(ids)){
 			return Rest.failure("客户端传入对象id为空");
 		}
@@ -112,6 +122,44 @@ public class UserController extends AdminController{
 		return Rest.ok();
 	}
 	
+	/**
+	 * 编辑视图
+	 * @param id
+	 * @param model
+	 * @return
+	 */
+	@RequiresPermissions("user:edit")
+	@RequestMapping("/edit")
+	public String edit(String id,Model model){
+		model.addAttribute("sysUser", sysUserService.selectById(id));
+		return "user/user-edit";
+	}
+	
+	/**
+	 * 执行编辑
+	 * @param sysUser
+	 * @param state
+	 * @param rids
+	 * @return
+	 */
+	@ResponseBody
+	@RequestMapping("/doEdit")
+	public Rest doEdit(SysUser sysUser,Boolean state,String[] rids){
+		if(BooleanUtils.isTrue(state)){
+			sysUser.setUserState(SysUser._1);
+		}else{
+			sysUser.setUserState(SysUser._0);
+		}
+		sysUserService.updateUser(sysUser, rids);
+		return Rest.ok();
+	}
+	
+	/**
+	 * 重置密码
+	 * @param id
+	 * @param pwd
+	 * @return
+	 */
 	@RequiresPermissions("user:restpwd")
 	@RequestMapping("/repwd")
 	public Rest repwd(String id,String pwd){
@@ -128,35 +176,5 @@ public class UserController extends AdminController{
 		sysUser.setPassword(BaseUtil.md51024Pwd(pwd, sysUser.getUserName()));
 		sysUserService.updateById(sysUser);
 		return Rest.ok();
-	}
-	
-	*//**
-	 * 获取当前用户
-	 * @return
-	 *//*
-	@RequestMapping("/get/curuser")
-	public Rest getCurUser(){
-		
-		Subject subject = SecurityUtils.getSubject();
-		if(subject != null){
-			SysUser sysUser = (SysUser) subject.getPrincipal();
-			return Rest.okData(sysUser);
-		}
-		return Rest.failure("登录过期");
-	}*/
-	
-	@ResponseBody
-	@RequestMapping("/init")
-	public String init(){
-		for(int i=0;i<1000;i++){
-			SysUser user = new SysUser();
-			user.setCreateTime(new Date());
-			user.setPassword("******");
-			user.setUserDesc("测试描述_"+i);
-			user.setUserName("testName_"+i);
-			user.setUserState(1);
-			sysUserService.insert(user);
-		}
-		return "ok";
 	}
 }

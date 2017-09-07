@@ -10,9 +10,21 @@
 	<context:component-scan base-package="com.vacomall.controller" />
 
 	<mvc:resources location="/static/" mapping="/static/**" />
-
-	<mvc:annotation-driven />
-
+	
+	<bean id="objectMapper" class="com.vacomall.util.CustomObjectMapper" init-method="init">
+		<!-- 驼峰转为下划线 -->
+	    <property name="camelCaseToLowerCaseWithUnderscores" value="false"/>
+	    <property name="dateFormatPattern" value="yyyy-MM-dd HH:mm:ss"/>
+	</bean>
+	
+	<mvc:annotation-driven>
+		<mvc:message-converters>
+			<bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter" >
+				 <property name="objectMapper" ref="objectMapper"/>
+			</bean>
+		</mvc:message-converters>
+	</mvc:annotation-driven>
+	
 	<!-- spring 加载配置文件 -->
 	<bean
 		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">

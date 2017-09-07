@@ -1,78 +1,56 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="utf-8">
-        <title>
-            X-admin v1.0
-        </title>
-        <meta name="renderer" content="webkit">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-        <meta name="apple-mobile-web-app-status-bar-style" content="black">
-        <meta name="apple-mobile-web-app-capable" content="yes">
-        <meta name="format-detection" content="telephone=no">
-        <link rel="stylesheet" href="/static/css/x-admin.css" media="all">
-    </head>
-    <body>
-        <div class="x-nav">
-            <span>
-              <a><cite>首页  > </cite></a>
-              <a><cite>系统管理 > </cite></a>
-              <a><cite>用户管理 </cite></a>
-            </span>
-            <a class="layui-btn layui-btn-small" style="line-height:1.6em;margin-top:3px;float:right"  href="javascript:location.replace(location.href);" title="刷新"><i class="layui-icon" style="line-height:30px">ဂ</i></a>
-        </div>
-        <div class="x-body">
-            
-            <div style="padding-bottom: 10px;">
+<#include "/common/layout.html"/>
+<@head>
+</@head>
+<@body>
+    <div class="x-body">
+        <form class="layui-form" style="padding-bottom: 10px;text-align: left;">
+			    关键词：
 			  <div class="layui-inline">
-			    <input class="layui-input" name="id" id="search" autocomplete="off" placeholder="用户名">
+			    <input class="layui-input" type="text" name="search" autocomplete="off" placeholder="用户名">
 			  </div>
-			  <button class="layui-btn" data-type="reload" id="search-btn"><i class="layui-icon">&#xe615;</i></button>
-			</div>
-			
-            <xblock>
-            	<button class="layui-btn layui-btn-danger" onclick="delAll()"><i class="layui-icon">&#xe640;</i>批量删除</button>
-            	<button class="layui-btn" onclick="x_admin_show('新增用户','/user/add','600','400')"><i class="layui-icon">&#xe608;</i>添加</button>
-            	<span class="x-right" style="line-height:40px">共有数据：2 条</span>
-            </xblock>
-            
-			<table class="layui-table" lay-data="{ url:'/user/json', page:true, id:'lay-table',limit:10}" lay-filter="table">
-			  <thead>
-			    <tr>
-			      <th lay-data="{checkbox:true, fixed: true}"></th>
-			      <th lay-data="{field:'userName', width:150}">用户名</th>
-			      <th lay-data="{field:'userState', width:80}">状态</th>
-			      <th lay-data="{field:'createTime', width:177,sort: true,}">创建时间</th>
-			      <th lay-data="{field:'userDesc', width:200}">描述</th>
-			      <th lay-data="{fixed: 'right', width:200, align:'center', toolbar: '#row-bar'}">操作</th>
-			    </tr>
-			  </thead>
-			</table>
-			<script type="text/html" id="row-bar">
- 			 	<a class="layui-btn layui-btn-small" lay-event="edit"><i class="layui-icon">&#xe642;</i> 编辑</a>
-  				<a class="layui-btn layui-btn-danger layui-btn-small" lay-event="del"><i class="layui-icon">&#xe640;</i> 删除</a>
-			</script>
-        </div>
-        <script src="/static/lib/layui/layui.js" charset="utf-8"></script>
-        <script src="/static/js/x-layui.js" charset="utf-8"></script>
-        <script>
-			layui.use('table', function(){
-			  var table = layui.table;
-			  $ = layui.$;
-			  //条件查询
-			  $("#search-btn").click(function(){
-				  table.reload('lay-table', {
-			        where: {
-			          key: {
-			            search: $("#search").val()
-			          }
-			        }
-			      });
-			  });
-			  
-			});
+			  	状态：
+		 	 <div class="layui-inline">
+				   <select name="userState" lay-verify="">
+				       <option value="">--请选择--</option>
+				       <option value="1">启用</option>
+				       <option value="0">禁用</option>
+				    </select>
+		 	  </div>
+	 	 <button class="layui-btn"  lay-submit lay-filter="search"><i class="layui-icon">&#xe615;</i></button>
+		</form>
+
+         <xblock>
+         	<button class="layui-btn dialog" data-url="/user/add" data-title="新增用户" ><i class="layui-icon">&#xe608;</i>添加</button>
+         	<button class="layui-btn layui-btn-danger del-all" data-url="/user/delete"><i class="layui-icon">&#xe640;</i>批量删除</button>
+         </xblock>
+         
+		<table class="layui-table" lay-data="{height:'full-230', url:'/user/json', page:true, id:'table',limit:20}" lay-filter="table">
+		  <thead>
+		    <tr>
+		      <th lay-data="{checkbox:true, fixed: true}"></th>
+		      <th lay-data="{field:'userName', width:150}">用户名</th>
+		      <th lay-data="{field:'userState', width:80,templet:'#state-tpl'}">状态</th>
+		      <th lay-data="{field:'createTime', width:177,sort: true,}">创建时间</th>
+		      <th lay-data="{field:'userDesc', width:200}">描述</th>
+		      <th lay-data="{fixed: 'right', width:200, align:'center', toolbar: '#row-bar'}">操作</th>
+		    </tr>
+		  </thead>
+		</table>
+
+ 		<script type="text/html" id="state-tpl">
+ 					 {{#  if(d.userState == 1){ }}
+   						 <font color='green'>启用</font>
+ 						 {{#  } else { }}
+    					<font color='red'>禁止</font>
+  					{{#  } }}
 		</script>
-        
-    </body>
-</html>
+
+		<script type="text/html" id="row-bar">
+ 			 	<a class="layui-btn layui-btn-small" lay-event="edit" data-url="/user/edit" data-title="编辑用户" data-width="800" data-height="600" ><i class="layui-icon">&#xe642;</i> 编辑</a>
+  				<a class="layui-btn layui-btn-danger layui-btn-small" lay-event="del" data-url='/user/delete'><i class="layui-icon">&#xe640;</i> 删除</a>
+		</script>
+    </div>
+</@body>
+<@footer>
+	<script src="/static/js/x-table.js" charset="utf-8"></script>
+</@footer>
