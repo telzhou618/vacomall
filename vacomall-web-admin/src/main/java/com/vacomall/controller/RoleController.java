@@ -149,7 +149,7 @@ public class RoleController extends AdminController{
 	@ResponseBody
 	@RequiresPermissions("role:delete")
 	@RequestMapping("/delete")
-	public Rest delete(@RequestParam("ids") String[] ids){
+	public Rest delete(@RequestParam("ids[]") String[] ids){
 		if(ArrayUtils.isEmpty(ids)){
 			return Rest.failure("客户端传入对象id为空");
 		}
