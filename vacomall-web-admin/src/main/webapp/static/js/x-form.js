@@ -4,7 +4,7 @@ layui.use(['layer','form','table'], function(){
 	  	//监听提交
 		form.on('submit(submit)', function(data){
 		  var values = data.field,
-  	   		fm = data.form;
+	   		fm = data.form;
 	  	   var index = layer.load(1); //换了种风格
 	          $.post($(fm).attr('action'),values,function(data){
 	          	layer.close(index); 
@@ -23,6 +23,5 @@ layui.use(['layer','form','table'], function(){
 	          });
 	      	return false;
 	      });
-
-});
+	});
 

@@ -1,0 +1,45 @@
+<#include "/common/layout.html"/>
+<@head>
+</@head>
+<@body>
+	<div class="x-body">
+        <form class="layui-form layui-form-pane" action="/user/doAuth" method="post">
+        	 <input type="hidden" name="id" value="${sysUser.id}">
+             <div class="layui-form-item">
+                 <label for="L_title" class="layui-form-label">用户名</label>
+                 <div class="layui-input-block">
+                     <input type="text" value="${sysUser.userName}" readonly="readonly" lay-verify="required" placeholder="请输入用户名"
+                     autocomplete="off" class="layui-input">
+                 </div>
+             </div>
+             <div class="layui-form-item" pane="">
+                 <label  class="layui-form-label">可选角色</label>
+                 <div class="layui-input-block">
+                 	<#list roleList as role>
+                    	<input type="checkbox" name="roleId" title="${role.roleName}" lay-skin="primary" value="${role.id}" ${hasRoleIdList?seq_contains("${role.id}")?string("checked", "no")}><br>
+					</#list>
+                 </div>
+             </div>
+		     <div class="layui-form-item">
+			    <div class="layui-input-block">
+			      <button class="layui-btn" lay-submit lay-filter="submit">立即提交</button>
+			      <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+			    </div>
+			  </div>
+      </form>
+    </div>
+</@body>
+<@footer>
+<script type="text/javascript">
+layui.use(['layer','form'], function(){
+	var $ = layui.jquery,
+  		form = layui.form;
+	  	//监听提交
+		form.on('submit(submit)', function(data){
+		  var values = data.field,
+	   		fm = data.form;
+	      	 return true;
+	      });
+		});
+</script>
+</@footer>

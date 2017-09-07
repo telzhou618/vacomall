@@ -11,16 +11,18 @@
 
 	<mvc:resources location="/static/" mapping="/static/**" />
 	
-	<bean id="objectMapper" class="com.vacomall.util.CustomObjectMapper" init-method="init">
+	<bean id="objectMapper" class="com.vacomall.util.CustomObjectMapper"
+		init-method="init">
 		<!-- 驼峰转为下划线 -->
-	    <property name="camelCaseToLowerCaseWithUnderscores" value="false"/>
-	    <property name="dateFormatPattern" value="yyyy-MM-dd HH:mm:ss"/>
+		<property name="camelCaseToLowerCaseWithUnderscores" value="false" />
+		<property name="dateFormatPattern" value="yyyy-MM-dd HH:mm:ss" />
 	</bean>
 	
 	<mvc:annotation-driven>
 		<mvc:message-converters>
-			<bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter" >
-				 <property name="objectMapper" ref="objectMapper"/>
+			<bean
+				class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
+				<property name="objectMapper" ref="objectMapper" />
 			</bean>
 		</mvc:message-converters>
 	</mvc:annotation-driven>

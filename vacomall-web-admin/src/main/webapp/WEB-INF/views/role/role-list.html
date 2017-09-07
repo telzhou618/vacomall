@@ -1,0 +1,49 @@
+<#include "/common/layout.html"/>
+<@head>
+</@head>
+<@body>
+    <div class="x-body">
+        <form class="layui-form" style="padding-bottom: 10px;text-align: left;">
+			    关键词：
+			  <div class="layui-inline">
+			    <input class="layui-input" type="text" name="search" autocomplete="off" placeholder="角色名称">
+			  </div>
+	 	 <button class="layui-btn"  lay-submit lay-filter="search"><i class="layui-icon">&#xe615;</i></button>
+		</form>
+
+         <xblock>
+         	<button class="layui-btn dialog" data-url="/role/add" data-title="新增角色" ><i class="layui-icon">&#xe608;</i>添加</button>
+         	<button class="layui-btn layui-btn-danger del-all" data-url="/role/delete"><i class="layui-icon">&#xe640;</i>批量删除</button>
+         </xblock>
+         
+		<table class="layui-table" lay-data="{height:'full-230', url:'/role/json', page:true, id:'table',limit:20}" lay-filter="table">
+		  <thead>
+		    <tr>
+		      <th lay-data="{checkbox:true, fixed: true}"></th>
+		      <th lay-data="{field:'roleName', width:150}">角色名称</th>
+		      <th lay-data="{field:'roleDesc', width:200}">角色描述</th>
+		      <th lay-data="{field:'roleState', width:80,templet:'#state-tpl'}">状态</th>
+		      <th lay-data="{field:'createTime', width:177,sort: true,}">创建时间</th>
+		      <th lay-data="{fixed: 'right', width:260, align:'center', toolbar: '#row-bar'}">操作</th>
+		    </tr>
+		  </thead>
+		</table>
+
+ 		<script type="text/html" id="state-tpl">
+ 					 {{#  if(d.roleState == 1){ }}
+   						 <font color='green'>启用</font>
+ 						 {{#  } else { }}
+    					<font color='red'>禁止</font>
+  					{{#  } }}
+		</script>
+
+		<script type="text/html" id="row-bar">
+ 			 	<a class="layui-btn layui-btn-small" lay-event="edit" data-url="/role/edit" data-title="编辑角色" data-width="800" data-height="600" ><i class="layui-icon">&#xe642;</i> 编辑</a>
+ 			 	<a class="layui-btn layui-btn-small" lay-event="auth" data-url="/role/auth" data-title="分配权限" data-width="800" data-height="600" ><i class="layui-icon">&#xe64c;</i> 权限</a>
+  				<a class="layui-btn layui-btn-danger layui-btn-small" lay-event="del" data-url='/role/delete'><i class="layui-icon">&#xe640;</i> 删除</a>
+		</script>
+    </div>
+</@body>
+<@footer>
+	<script src="/static/js/x-table.js" charset="utf-8"></script>
+</@footer>

@@ -14,12 +14,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.baomidou.mybatisplus.entity.Column;
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.baomidou.mybatisplus.plugins.Page;
 import com.vacomall.bean.Rest;
 import com.vacomall.common.util.BaseUtil;
+import com.vacomall.system.i.ISysRoleService;
+import com.vacomall.system.i.ISysUserRoleService;
 import com.vacomall.system.i.ISysUserService;
 import com.vacomall.system.model.SysUser;
+import com.vacomall.system.model.SysUserRole;
 
 /**
  * 用户控制器
@@ -31,6 +35,8 @@ import com.vacomall.system.model.SysUser;
 public class UserController extends AdminController{
 
 	@Autowired private ISysUserService sysUserService;
+	@Autowired private ISysRoleService sysRoleService;
+	@Autowired private ISysUserRoleService sysUserRoleService;
 	
 	/**
 	 * 列表视图
@@ -176,5 +182,29 @@ public class UserController extends AdminController{
 		sysUser.setPassword(BaseUtil.md51024Pwd(pwd, sysUser.getUserName()));
 		sysUserService.updateById(sysUser);
 		return Rest.ok();
+	}
+	
+	@RequestMapping("/auth")
+	public String auth(Model model,String id){
+		
+		model.addAttribute("sysUser",sysUserService.selectById(id));
+		model.addAttribute("roleList",sysRoleService.selectList(null));
+		model.addAttribute("hasRoleIdList",sysUserRoleService.selectObjs(new EntityWrapper<SysUserRole>().setSqlSelect(new Column().column("roleId")).eq("userId", id)));
+		return "user/user-auth";
+	}
+	
+	@ResponseBody
+	@RequestMapping("/doAuth")
+	public String doAuth(Model model,String id,String[] roleId){
+		sysUserRoleService.delete(new EntityWrapper<SysUserRole>().eq("userId", id));
+		if(ArrayUtils.isNotEmpty(roleId)){
+			for(String rid : roleId){
+				SysUserRole ur = new SysUserRole();
+				ur.setUserId(id);
+				ur.setRoleId(rid);
+				sysUserRoleService.insert(ur);
+			}
+		}
+		return "OK!";
 	}
 }

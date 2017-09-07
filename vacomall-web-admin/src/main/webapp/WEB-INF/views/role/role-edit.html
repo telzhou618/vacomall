@@ -1,0 +1,38 @@
+<#include "/common/layout.html"/>
+<@head>
+</@head>
+<@body>
+	<div class="x-body">
+        <form class="layui-form layui-form-pane" action="/role/doEdit">
+        	 <input type="hidden" name="id" value="${sysRole.id}">
+             <div class="layui-form-item">
+                 <label for="L_title" class="layui-form-label">用户名</label>
+                 <div class="layui-input-block">
+                     <input type="text" id="L_title" name="roleName" value="${sysRole.roleName}" readonly="readonly" lay-verify="required" placeholder="请输入角色名称"
+                     autocomplete="off" class="layui-input">
+                 </div>
+             </div>
+             <div class="layui-form-item" pane>
+	    		<label class="layui-form-label">状态</label>
+			    <div class="layui-input-block">
+			      <input type="checkbox" name="state" lay-skin="switch" lay-text="启用|禁止" <#if sysRole.roleState==1> checked </#if> >
+			    </div>
+		 	 </div>
+		 	 <div class="layui-form-item">
+			    <label class="layui-form-label">描述</label>
+			    <div class="layui-input-block">
+			      <textarea name="roleDesc" placeholder="请输入描述"  class="layui-textarea">${sysRole.roleDesc}</textarea>
+			   </div>
+	 		</div>
+	     <div class="layui-form-item">
+		    <div class="layui-input-block">
+		      <button class="layui-btn" lay-submit lay-filter="submit">立即提交</button>
+		      <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+		    </div>
+		  </div>
+      </form>
+    </div>
+</@body>
+<@footer>
+<script src="/static/js/x-form.js" charset="utf-8"></script>
+</@footer>
