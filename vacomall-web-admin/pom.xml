@@ -22,7 +22,6 @@
 			<groupId>com.vacomall</groupId>
 			<artifactId>vacomall-facade-system</artifactId>
 		</dependency>
-		
 	</dependencies>
 	<build>
 		<finalName>vacomall-web-admin</finalName>

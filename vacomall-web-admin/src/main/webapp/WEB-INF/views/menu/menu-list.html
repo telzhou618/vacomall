@@ -1,0 +1,44 @@
+<#include "/common/layout.html"/>
+<@head>
+</@head>
+<@body>
+    <div class="x-body">
+        <form class="layui-form" style="padding-bottom: 10px;text-align: left;">
+			    关键词：
+			  <div class="layui-inline">
+			    <input class="layui-input" type="text" name="search" autocomplete="off" placeholder="菜单名称">
+			  </div>
+	 	 <button class="layui-btn"  lay-submit lay-filter="search"><i class="layui-icon">&#xe615;</i></button>
+		</form>
+
+         <xblock>
+         	<button class="layui-btn dialog" data-url="/menu/add" data-title="新增菜单" ><i class="layui-icon">&#xe608;</i>添加</button>
+         	<button class="layui-btn layui-btn-danger del-all" data-url="/menu/delete"><i class="layui-icon">&#xe640;</i>批量删除</button>
+         </xblock>
+         
+		<table class="layui-table" lay-data="{height:'full-230', url:'/menu/json', page:true, id:'table',limit:20}" lay-filter="table">
+		  <thead>
+		    <tr>
+		      <th lay-data="{checkbox:true, fixed: true}"></th>
+		      <th lay-data="{field:'text', width:180}">菜单名称</th>
+		      <th lay-data="{field:'code', width:150}">菜单编码</th>
+		      <th lay-data="{field:'url', width:200}">菜单地址</th>
+		      <th lay-data="{field:'icon', width:80,templet:'#icon-tpl'}">图标</th>
+		      <th lay-data="{field:'sort', width:80}">排序</th>
+		      <th lay-data="{field:'resource', width:177}">权限资源</th>
+		      <th lay-data="{fixed: 'right', width:260, align:'center', toolbar: '#row-bar'}">操作</th>
+		    </tr>
+		  </thead>
+		</table>
+		<script type="text/html" id="icon-tpl">
+ 			<i class="layui-icon">{{d.icon}}</i>
+		</script>
+		<script type="text/html" id="row-bar">
+ 			<a class="layui-btn layui-btn-small" lay-event="edit" data-url="/menu/edit" data-title="编辑菜单" data-width="800" data-height="600" ><i class="layui-icon">&#xe642;</i> 编辑</a>
+  			<a class="layui-btn layui-btn-danger layui-btn-small" lay-event="del" data-url='/menu/delete'><i class="layui-icon">&#xe640;</i> 删除</a>
+		</script>
+    </div>
+</@body>
+<@footer>
+	<script src="/static/js/x-table.js" charset="utf-8"></script>
+</@footer>

@@ -1,0 +1,61 @@
+<#include "/common/layout.html"/>
+<@head>
+</@head>
+<@body>
+	<div class="x-body">
+        <form class="layui-form layui-form-pane" action="/menu/doEdit">
+			<input type="hidden" value="${sysMenu.id}" name="id" />
+			 <div class="layui-form-item">
+                <label for="L_title" class="layui-form-label">编码</label>
+                <div class="layui-input-block">
+                    <input type="text" id="L_title" name="code" lay-verify="required" value="${sysMenu.code}" placeholder="请输入菜单编码"
+                    autocomplete="off" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label  class="layui-form-label">菜单名称</label>
+                <div class="layui-input-block">
+                    <input type="text" name="text" lay-verify="required" placeholder="请输入菜单名称" value="${sysMenu.text}"
+                    autocomplete="off" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label  class="layui-form-label">链接地址</label>
+                <div class="layui-input-block">
+                    <input type="text" name="url" lay-verify="url" placeholder="请输入URL" value="${sysMenu.url}"
+                    autocomplete="off" class="layui-input">
+                </div>
+            </div>
+             <div class="layui-form-item">
+                <label  class="layui-form-label">权限资源</label>
+                <div class="layui-input-block">
+                    <input type="text" name="resource" placeholder="权限资源" value="${sysMenu.resource}"
+                    autocomplete="off" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label  class="layui-form-label">图标</label>
+                <div class="layui-input-block">
+                    <input type="text" name="icon"  placeholder="图标" value="${sysMenu.icon}"
+                    autocomplete="off" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label  class="layui-form-label">排序</label>
+                <div class="layui-input-block">
+                    <input type="text" name="sort" lay-verify="number" value="0"  placeholder="排序" value="${sysMenu.sort}"
+                    autocomplete="off" class="layui-input">
+                </div>
+            </div>
+		    <div class="layui-form-item">
+		    	<div class="layui-input-block">
+		      		<button class="layui-btn" lay-submit lay-filter="submit">立即提交</button>
+		      		<button type="reset" class="layui-btn layui-btn-primary">重置</button>
+		    	</div>
+		  </div>
+        </form>
+    </div>
+</@body>
+<@footer>
+<script src="/static/js/x-form.js" charset="utf-8"></script>
+</@footer>

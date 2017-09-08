@@ -88,8 +88,11 @@
 			<groupId>com.baidu.disconf</groupId>
 			<artifactId>disconf-client</artifactId>
 		</dependency>
-
-
+		<!-- 监控 -->
+		<dependency>
+            <groupId>net.bull.javamelody</groupId>
+            <artifactId>javamelody-core</artifactId>
+        </dependency>
 	</dependencies>
 
 </project>
