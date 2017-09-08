@@ -1,0 +1,64 @@
+<#include "/common/layout.html"/>
+<@head>
+</@head>
+<@body>
+	<div class="x-body">
+        <form class="layui-form layui-form-pane" action="/brand/doEdit">
+        	<input type="hidden" name="brandId" value="${brand.brandId}">
+            <div class="layui-form-item">
+                <label  class="layui-form-label">品牌名称</label>
+                <div class="layui-input-block">
+                    <input type="text" name="brandName" lay-verify="required" value="${brand.brandName}" placeholder="请输入品牌名称"
+                    autocomplete="off" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label  class="layui-form-label">品牌Logo</label>
+                <div class="layui-input-block">
+                    <button type="button" class="layui-btn layui-btn-danger" id="file-btn"><i class="layui-icon"></i>上传</button>
+					<div class="layui-inline layui-word-aux" id="file-txt">
+					  	${brand.brandLogo}
+					</div>
+					<input type="hidden" name="brandLogo" id="file-val"  lay-verify="file" value="${brand.brandLogo}" />
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label  class="layui-form-label">品牌URL</label>
+                <div class="layui-input-block">
+                    <input type="text" name="siteUrl" lay-verify="required|url" value="${brand.siteUrl}" placeholder="请输入品牌URL"
+                    autocomplete="off" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label  class="layui-form-label">品牌排序</label>
+                <div class="layui-input-block">
+                    <input type="text" name="sortOrder" lay-verify="required" value="${brand.sortOrder}" placeholder="请输入品牌排序"
+                    autocomplete="off" class="layui-input">
+                </div>
+            </div>
+            
+            <div class="layui-form-item" pane>
+	    		<label class="layui-form-label">是否展示</label>
+			    <div class="layui-input-block">
+			      <input type="checkbox" name="isShow" lay-skin="switch" lay-text="是|否" value="1" checked="checked">
+			    </div>
+		 	 </div>
+            
+	 		<div class="layui-form-item layui-form-text">
+			    <label class="layui-form-label">品牌描述</label>
+			    <div class="layui-input-block">
+			      <textarea name="brandDesc" placeholder="请输入描述" lay-verify="required"  class="layui-textarea">${brand.brandDesc}</textarea>
+			   </div>
+	 		</div>
+		    <div class="layui-form-item">
+		    	<div class="layui-input-block">
+		      		<button class="layui-btn" lay-submit lay-filter="submit">立即提交</button>
+		      		<button type="reset" class="layui-btn layui-btn-primary">重置</button>
+		    	</div>
+		  </div>
+        </form>
+    </div>
+</@body>
+<@footer>
+<script src="/static/js/x-form.js" charset="utf-8"></script>
+</@footer>

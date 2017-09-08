@@ -20,13 +20,14 @@ layui.use(['table','element','form'], function(){
 		var url = $(me).attr('data-url'),
 			width=$(me).attr('data-width'),
 			height=$(me).attr('data-height'),
+			id=$(me).attr('data-id') || 'id',
 			title = $(me).attr('data-title') || '';
 	    var data = obj.data;
 	    
 	    //删除
 	    if(obj.event === 'del'){
 	      layer.confirm('确定删除?',{icon: 3, title:'警告'}, function(index){
-	        $.post(url,{ids:[data.id]},function(json){
+	        $.post(url,{ids:[data[id]]},function(json){
 	        	if(json.code==200){
 	        		layer.msg('删除成功');
 	        		layer.close(index);
@@ -39,15 +40,16 @@ layui.use(['table','element','form'], function(){
 	      
 	      //编辑
 	     } else if(obj.event === 'edit'){
-	    	x_admin_show(title,url+'?id='+data.id,width,height);
+	    	x_admin_show(title,url+'?id='+data[id],width,height);
 	    } else {
-	    	x_admin_show(title,url+'?id='+data.id,width,height);
+	    	x_admin_show(title,url+'?id='+data[id],width,height);
 	    }
 	  });
 	 
 	  //批量删除
 	  $(".del-all").on('click',function(){
 		  var url = $(this).attr('data-url');
+		  var id = $(this).attr('data-id') || "id";
 		  var checkStatus = table.checkStatus('table');
 	      data = checkStatus.data;
 	      if(data.length==0){
@@ -56,7 +58,7 @@ layui.use(['table','element','form'], function(){
 	      }
 	      var _ids = [];
 	      $.each(data,function(i,n){
-	    	  _ids.push(n.id);
+	    	  _ids.push(n[id]);
 	      });
 	      layer.confirm('确定删除?',{icon: 3, title:'警告'}, function(index){
 	        $.post(url,{ids:_ids},function(json){
@@ -83,5 +85,13 @@ layui.use(['table','element','form'], function(){
 	      });
          return false;
        });
+	  
+	 /* $("button").on("mouseover",function(){
+		  var text = $(this).text();
+		  text = text.replace(/[^\u4e00-\u9fa5]/gi,"");
+		  if(text!=''){
+			  layer.tips(text,this);
+		  }
+	});	*/
 });
 

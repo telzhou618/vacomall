@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.vacomall.goods.mapper.BrandMapper">
+
+	<!-- 通用查询映射结果 -->
+	<resultMap id="BaseResultMap" type="com.vacomall.goods.model.Brand">
+		<id column="brand_id" property="brandId" />
+		<result column="brand_name" property="brandName" />
+		<result column="brand_logo" property="brandLogo" />
+		<result column="brand_desc" property="brandDesc" />
+		<result column="site_url" property="siteUrl" />
+		<result column="sort_order" property="sortOrder" />
+		<result column="is_show" property="isShow" />
+	</resultMap>
+
+</mapper>

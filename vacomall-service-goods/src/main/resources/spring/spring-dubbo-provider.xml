@@ -8,7 +8,7 @@
        http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
 
     <!-- 提供方应用信息，用于计算依赖关系 -->
-    <dubbo:application name="vacomall-service-system"  />
+    <dubbo:application name="vacomall-service-goods"  />
 
     <!-- 使用redis中心暴露发现服务地址-->
     <dubbo:registry  address="${dubbo.address}"  check="false" />
@@ -24,15 +24,9 @@
     <dubbo:provider timeout="10000" threadpool="fixed" threads="100" accepts="1000" />
 
     <!--通讯配置-->
-    <dubbo:protocol name="dubbo"  dispatcher="all" threadpool="fixed" threads="20" port="28880" />
+    <dubbo:protocol name="dubbo"  dispatcher="all" threadpool="fixed" threads="20" port="28881" />
 
     <!-- 声明需要暴露的服务接口 -->
-    <dubbo:service  interface="com.vacomall.system.i.ISysLogService" ref="sysLogServiceImpl"  />
-    <dubbo:service  interface="com.vacomall.system.i.ISysMenuService" ref="sysMenuServiceImpl"  />
-    <dubbo:service  interface="com.vacomall.system.i.ISysRoleMenuService" ref="sysRoleMenuServiceImpl"  />
-    <dubbo:service  interface="com.vacomall.system.i.ISysRoleService" ref="sysRoleServiceImpl"  />
-    <dubbo:service  interface="com.vacomall.system.i.ISysSettingService" ref="sysSettingServiceImpl"  />
-    <dubbo:service  interface="com.vacomall.system.i.ISysUserRoleService" ref="sysUserRoleServiceImpl"  />
-    <dubbo:service  interface="com.vacomall.system.i.ISysUserService" ref="sysUserServiceImpl"  />
+    <dubbo:service  interface="com.vacomall.goods.i.IBrandService" ref="brandServiceImpl"  />
 
 </beans>

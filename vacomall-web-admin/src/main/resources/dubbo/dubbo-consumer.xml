@@ -21,4 +21,5 @@
 
     <!-- 用户信息引用 -->
     <import resource="dubbo-reference-system.xml" />
+    <import resource="dubbo-reference-goods.xml" />
 </beans>

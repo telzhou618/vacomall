@@ -1,0 +1,55 @@
+<#include "/common/layout.html"/>
+<@head>
+</@head>
+<@body>
+    <div class="x-body">
+        <form class="layui-form" style="padding-bottom: 10px;text-align: left;">
+			    关键词：
+			  <div class="layui-inline">
+			    <input class="layui-input" type="text" name="search" autocomplete="off" placeholder="品牌名称">
+			  </div>
+	 	 <button class="layui-btn"  lay-submit lay-filter="search"><i class="layui-icon">&#xe615;</i></button>
+		</form>
+
+         <xblock>
+         	<button class="layui-btn dialog" data-url="/brand/add" data-title="新增品牌" ><i class="layui-icon">&#xe608;</i>添加</button>
+         	<button class="layui-btn layui-btn-danger del-all" data-url="/brand/delete" data-id='brandId'><i class="layui-icon">&#xe640;</i>批量删除</button>
+         </xblock>
+         
+		<table class="layui-table" lay-data="{height:'full-230', url:'/brand/json', page:true, id:'table',limit:20}" lay-filter="table">
+		  <thead>
+		    <tr>
+		      <th lay-data="{checkbox:true, fixed: true}"></th>
+		      <th lay-data="{field:'brandName', width:150}">品牌名称</th>
+		      <th lay-data="{field:'brandLogo', width:150,templet:'#img-tpl'}">品牌Logo</th>
+		      <th lay-data="{field:'siteUrl', width:177,templet:'#url-tpl'}">品牌地址</th>
+		      <th lay-data="{field:'brandDesc', width:200}">品牌描述</th>
+		      <th lay-data="{field:'brandState', width:80,templet:'#show-tpl'}">是否展示</th>
+		      <th lay-data="{field:'sortOrder', width:177}">排序</th>
+		      <th lay-data="{fixed: 'right', width:260, align:'center', toolbar: '#row-bar'}">操作</th>
+		    </tr>
+		  </thead>
+		</table>
+		<script type="text/html" id="url-tpl">
+ 			<a href="{{d.siteUrl}}" target="_blank" style="color:#009688">{{d.siteUrl}}</a>
+		</script>
+		<script type="text/html" id="img-tpl">
+ 			<img src="{{d.brandLogo}}" width="100" onclick="layer.tips('{{d.brandName}}', this);" />
+		</script>
+ 		<script type="text/html" id="show-tpl">
+ 					 {{#  if(d.isShow){ }}
+   						 <font color='green'>是</font>
+ 						 {{#  } else { }}
+    					<font color='red'>否</font>
+  					{{#  } }}
+		</script>
+
+		<script type="text/html" id="row-bar">
+ 			 	<a class="layui-btn layui-btn-small" lay-event="edit" data-url="/brand/edit" data-id='brandId' data-title="编辑品牌" data-width="800" data-height="600" ><i class="layui-icon">&#xe642;</i> 编辑</a>
+  				<a class="layui-btn layui-btn-danger layui-btn-small" lay-event="del" data-url='/brand/delete' data-id='brandId'><i class="layui-icon">&#xe640;</i> 删除</a>
+		</script>
+    </div>
+</@body>
+<@footer>
+	<script src="/static/js/x-table.js" charset="utf-8"></script>
+</@footer>
