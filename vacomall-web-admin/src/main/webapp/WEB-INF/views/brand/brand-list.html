@@ -1,4 +1,4 @@
-<#include "/common/layout.html"/>
+<#include "/common/layout_table.html"/>
 <@head>
 </@head>
 <@body>
@@ -34,7 +34,7 @@
  			<a href="{{d.siteUrl}}" target="_blank" style="color:#009688">{{d.siteUrl}}</a>
 		</script>
 		<script type="text/html" id="img-tpl">
- 			<img src="{{d.brandLogo}}" width="100" onclick="layer.tips('{{d.brandName}}', this);" />
+ 			<img src="{{d.brandLogo}}"  width="120" onclick="layer.tips('{{d.brandName}}', this);" />
 		</script>
  		<script type="text/html" id="show-tpl">
  					 {{#  if(d.isShow){ }}
@@ -51,5 +51,4 @@
     </div>
 </@body>
 <@footer>
-	<script src="/static/js/x-table.js" charset="utf-8"></script>
 </@footer>

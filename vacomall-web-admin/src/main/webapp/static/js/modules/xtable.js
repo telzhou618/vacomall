@@ -1,9 +1,11 @@
-layui.use(['table','element','form'], function(){
-	var $ = layui.jquery,
-  		element = layui.element,
-  		form = layui.form,
-  		table = layui.table;
+//layui xtable
+layui.define(['layer','table','element','form'], function(exports){
 	
+	var $ = layui.jquery,
+		element = layui.element,
+		form = layui.form,
+		table = layui.table;
+  
 	//弹窗
 	$(".dialog").on('click',function(){
 		var me = this;
@@ -77,7 +79,6 @@ layui.use(['table','element','form'], function(){
 	  form.on('submit(search)', function(data){
    	   var values = data.field,
    	   	fm = data.form;
-   	   	 console.log(values);
 	   	 table.reload('table', {
 	        where: {
 	          key: values
@@ -85,13 +86,7 @@ layui.use(['table','element','form'], function(){
 	      });
          return false;
        });
-	  
-	 /* $("button").on("mouseover",function(){
-		  var text = $(this).text();
-		  text = text.replace(/[^\u4e00-\u9fa5]/gi,"");
-		  if(text!=''){
-			  layer.tips(text,this);
-		  }
-	});	*/
-});
-
+  
+  exports('xtable', {});
+});  
+ 

@@ -1,4 +1,4 @@
-<#include "/common/layout.html"/>
+<#include "/common/layout_form.html"/>
 <@head>
 </@head>
 <@body>
@@ -47,21 +47,4 @@
     </div>
 </@body>
 <@footer>
-<script src="/static/js/x-form.js" charset="utf-8"></script>
-<script type="text/javascript"> 
- layui.use(['form','layer'], function(){
-     var $ = layui.jquery,
-     	form = layui.form;
-     //重复密码验证
-     form.verify({
-			regPwd: function(value) {
-				//获取密码
-				var pwd = $("#password").val();
-				if(!new RegExp(pwd).test(value)) {
-					return '两次输入的密码不一致';
-				}
-			}
-		});
-     });        
-</script>
 </@footer>
