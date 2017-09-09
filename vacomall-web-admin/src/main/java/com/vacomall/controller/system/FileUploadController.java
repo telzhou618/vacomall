@@ -1,4 +1,4 @@
-package com.vacomall.controller;
+package com.vacomall.controller.system;
 
 import java.io.File;
 import java.io.IOException;

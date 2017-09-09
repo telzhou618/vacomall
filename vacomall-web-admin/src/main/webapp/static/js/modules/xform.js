@@ -79,6 +79,11 @@ layui.define(['layer','form','upload'], function(exports){
 		});
 		return false;
 	});
+	//监听开关
+	form.on('switch(switch)', function(data){
+		layer.tips(data.elem.checked?'是':'否',data.othis);
+	});
+	
   exports('xform', {});
 });  
  

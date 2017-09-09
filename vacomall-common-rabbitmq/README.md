@@ -1,2 +1,0 @@
-# vacomall
-RabbitMQ模块

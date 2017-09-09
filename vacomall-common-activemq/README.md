@@ -1,0 +1,2 @@
+# vacomall
+Activemq模块

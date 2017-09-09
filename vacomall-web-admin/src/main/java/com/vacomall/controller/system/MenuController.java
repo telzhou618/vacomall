@@ -1,4 +1,4 @@
-package com.vacomall.controller;
+package com.vacomall.controller.system;
 
 import java.util.Arrays;
 import java.util.List;
@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.baomidou.mybatisplus.plugins.Page;
 import com.vacomall.bean.Rest;
+import com.vacomall.controller.AdminController;
 import com.vacomall.system.i.ISysMenuService;
 import com.vacomall.system.model.SysMenu;
 import com.vacomall.system.model.SysUser;

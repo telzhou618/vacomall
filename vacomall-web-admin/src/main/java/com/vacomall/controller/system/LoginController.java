@@ -1,4 +1,4 @@
-package com.vacomall.controller;
+package com.vacomall.controller.system;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

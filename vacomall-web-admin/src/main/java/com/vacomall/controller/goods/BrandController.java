@@ -1,4 +1,4 @@
-package com.vacomall.controller;
+package com.vacomall.controller.goods;
 
 import java.util.Arrays;
 

@@ -1,4 +1,4 @@
-package com.vacomall.controller;
+package com.vacomall.controller.system;
 
 import java.util.Arrays;
 import java.util.Date;
@@ -19,6 +19,7 @@ import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.baomidou.mybatisplus.plugins.Page;
 import com.vacomall.bean.Rest;
 import com.vacomall.common.util.BaseUtil;
+import com.vacomall.controller.AdminController;
 import com.vacomall.system.i.ISysRoleService;
 import com.vacomall.system.i.ISysUserRoleService;
 import com.vacomall.system.i.ISysUserService;
