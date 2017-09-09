@@ -50,7 +50,7 @@
       <td>--</th>
 	  </tr>
     <tr>
-	    <td>tomcat-disconf</td>
+	    <td>disconf</td>
       <td>v2.6.36</td>
 	    <td>127.0.0.1:8015</td>
       <td>使用Tomcat部署disconf</th>
