@@ -51,7 +51,7 @@ public class BrandController {
 	public Rest json (
 			@RequestParam(value="page",defaultValue="1") Integer page,
 			@RequestParam(value="limit",defaultValue="10") Integer size,
-			@RequestParam(value="key[search]",required=false) String search){
+			@RequestParam(value="search",required=false) String search){
 		
 		EntityWrapper<Brand> ew = new EntityWrapper<Brand>();
 		ew.orderBy("sort_order", false);

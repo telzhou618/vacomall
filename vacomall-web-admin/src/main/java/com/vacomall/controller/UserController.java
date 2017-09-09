@@ -60,8 +60,8 @@ public class UserController extends AdminController{
 	public Rest json (
 			@RequestParam(value="page",defaultValue="1") Integer page,
 			@RequestParam(value="limit",defaultValue="10") Integer size,
-			@RequestParam(value="key[search]",required=false) String search,
-		@RequestParam(value="key[userState]",required=false) Integer userState) {
+			@RequestParam(value="search",required=false) String search,
+		@RequestParam(value="userState",required=false) Integer userState) {
 		
 		EntityWrapper<SysUser> ew = new EntityWrapper<SysUser>();
 		ew.orderBy("createTime", false);

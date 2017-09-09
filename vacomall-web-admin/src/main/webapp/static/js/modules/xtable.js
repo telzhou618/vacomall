@@ -5,7 +5,7 @@ layui.define(['layer','table','element','form'], function(exports){
 		element = layui.element,
 		form = layui.form,
 		table = layui.table;
-  
+	
 	//弹窗
 	$(".dialog").on('click',function(){
 		var me = this;
@@ -80,9 +80,7 @@ layui.define(['layer','table','element','form'], function(exports){
    	   var values = data.field,
    	   	fm = data.form;
 	   	 table.reload('table', {
-	        where: {
-	          key: values
-	        }
+	        where: values
 	      });
          return false;
        });

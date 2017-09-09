@@ -64,7 +64,7 @@ public class RoleController extends AdminController{
 	public Rest json (
 			@RequestParam(value="page",defaultValue="1") Integer page,
 			@RequestParam(value="limit",defaultValue="10") Integer size,
-			@RequestParam(value="key[search]",required=false) String search,
+			@RequestParam(value="search",required=false) String search,
 			Model model) {
 		
 		EntityWrapper<SysRole> ew = new EntityWrapper<SysRole>();
