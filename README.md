@@ -4,3 +4,64 @@
 ##
 开源电商系统,正在设计中...
 
+#### 部署环境
+<div>
+<table border="0">
+    <tr>
+	    <th>服务</th>
+      <th>版本</th>
+	    <th>端口</th>
+      <th>说明</th>
+	  </tr>
+  <tr>
+	    <td>zookeeper1</td>
+      <td>v3.3.6</td>
+	    <td>127.0.0.1:2181</td>
+      <td>--</th>
+	  </tr>
+	  <tr>
+	    <td>zookeeper2</td>
+      <td>v3.3.6</td>
+	    <td>127.0.0.1:2182</td>
+      <td>--</th>
+	  </tr>
+    <tr>
+	    <td>zookeeper3</td>
+      <td>v3.3.6</td>
+	    <td>127.0.0.1:2183</td>
+      <td>--</th>
+	  </tr>
+    <tr>
+	    <td>redis1</td>
+      <td>v3.2</td>
+	    <td>127.0.0.1:6379</td>
+      <td>--</th>
+	  </tr>
+  <tr>
+	    <td>redis2</td>
+      <td>v3.2</td>
+	    <td>127.0.0.1:6380</td>
+      <td>--</th>
+	  </tr>
+    <tr>
+	    <td>nginx</td>
+      <td>v1.9.3</td>
+	    <td>127.0.0.1:80</td>
+      <td>--</th>
+	  </tr>
+    <tr>
+	    <td>tomcat-disconf</td>
+      <td>v2.6.36</td>
+	    <td>127.0.0.1:8015</td>
+      <td>使用Tomcat部署disconf</th>
+	  </tr>
+    <tr>
+	    <td>apache-activemq</td>
+      <td>v5.9.0</td>
+	    <td>127.0.0.1:8161</td>
+      <td>--</th>
+	  </tr>
+	</table>
+  </div>
+
+
