@@ -11,12 +11,13 @@
                     autocomplete="off" class="layui-input">
                 </div>
             </div>
-            <div class="layui-form-item" pane>
+	 		 <div class="layui-form-item" pane>
 			    <label class="layui-form-label">状态</label>
 			    <div class="layui-input-block">
-			      <input type="checkbox" name="state" lay-skin="switch" lay-text="启用|禁止" checked>
-			   </div>
-	 		</div>
+			      <input type="radio" name="roleState" value="1" title="启用" checked="checked">
+			      <input type="radio" name="roleState" value="0" title="禁止">
+			    </div>
+			  </div>
 	 		<div class="layui-form-item layui-form-text">
 			    <label class="layui-form-label">描述</label>
 			    <div class="layui-input-block">

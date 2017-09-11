@@ -5,7 +5,6 @@ import java.util.Date;
 
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.lang3.ArrayUtils;
-import org.apache.commons.lang3.BooleanUtils;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -95,17 +94,12 @@ public class UserController extends AdminController{
 	 */
 	@ResponseBody
 	@RequestMapping("/doAdd")
-	public Rest doAdd(SysUser sysUser,String confPassword,Boolean state, String[] rids){
+	public Rest doAdd(SysUser sysUser,String confPassword,String[] rids){
 		if(!confPassword.equals(sysUser.getPassword())){
 			return Rest.failure("两次输入的密码不一致");
 		}
 		if(sysUserService.selectCount(new EntityWrapper<SysUser>().eq("userName", sysUser.getUserName())) > 0){
 			return Rest.failure("用户名["+sysUser.getUserName()+"]已存在");
-		}
-		if(BooleanUtils.isTrue(state)){
-			sysUser.setUserState(SysUser._1);
-		}else{
-			sysUser.setUserState(SysUser._0);
 		}
 		sysUser.setCreateTime(new Date());
 		sysUser.setPassword(BaseUtil.md51024Pwd(sysUser.getPassword(), sysUser.getUserName()));
@@ -151,12 +145,7 @@ public class UserController extends AdminController{
 	 */
 	@ResponseBody
 	@RequestMapping("/doEdit")
-	public Rest doEdit(SysUser sysUser,Boolean state,String[] rids){
-		if(BooleanUtils.isTrue(state)){
-			sysUser.setUserState(SysUser._1);
-		}else{
-			sysUser.setUserState(SysUser._0);
-		}
+	public Rest doEdit(SysUser sysUser,String[] rids){
 		sysUserService.updateUser(sysUser, rids);
 		return Rest.ok();
 	}

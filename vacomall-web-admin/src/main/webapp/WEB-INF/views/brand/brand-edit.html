@@ -36,13 +36,13 @@
                     autocomplete="off" class="layui-input">
                 </div>
             </div>
-            
-            <div class="layui-form-item" pane>
-	    		<label class="layui-form-label">是否展示</label>
+		 	 <div class="layui-form-item" pane>
+			    <label class="layui-form-label">是否首页展示</label>
 			    <div class="layui-input-block">
-			      	<input type="checkbox" name="isShow" lay-skin="switch" lay-filter="switch" lay-text="是|否" value="${brand.isShow}">
+			      <input type="radio" name="isShow" value="1" title="展示" ${(brand.isShow==1)?string('checked','')}>
+			      <input type="radio" name="isShow" value="0" title="不展示" ${(brand.isShow==0)?string('checked','')}>
 			    </div>
-		 	 </div>
+		  	</div>
             
 	 		<div class="layui-form-item layui-form-text">
 			    <label class="layui-form-label">品牌描述</label>

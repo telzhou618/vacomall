@@ -26,12 +26,13 @@
                      autocomplete="off" class="layui-input">
                  </div>
              </div>
-             <div class="layui-form-item" pane>
-	    		<label class="layui-form-label">状态</label>
+              <div class="layui-form-item" pane>
+			    <label class="layui-form-label">状态</label>
 			    <div class="layui-input-block">
-			      <input type="checkbox" name="state" lay-skin="switch" lay-text="启用|禁止" <#if sysUser.userState==1> checked </#if> >
+			      <input type="radio" name="userState" value="1" title="启用" ${(sysUser.userState==1)?string('checked','')}>
+			      <input type="radio" name="userState" value="0" title="禁止" ${(sysUser.userState==0)?string('checked','')}>
 			    </div>
-		 	 </div>
+			  </div>
 		 	 <div class="layui-form-item">
 			    <label class="layui-form-label">描述</label>
 			    <div class="layui-input-block">

@@ -7,8 +7,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
+import com.vacomall.redis.JedisClient;
 import com.vacomall.system.i.ISysMenuService;
 import com.vacomall.system.model.SysMenu;
 
@@ -48,5 +50,13 @@ public class IndexController {
 	@RequestMapping("/welcome")
 	public String welcome(Model model){
 		return "welcome";
+	}
+	
+	@Autowired private JedisClient jedisClient;
+	
+	@ResponseBody
+	@RequestMapping("/test")
+	public String test(){
+		return jedisClient.get("test_key");
 	}
 }

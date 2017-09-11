@@ -23,6 +23,7 @@
         <property name="locations">
             <list>
                 <value>dubbo.properties</value>
+                <value>jedis.properties</value>
             </list>
         </property>
     </bean>
@@ -38,6 +39,7 @@
         </property>
     </bean>
 		
+	<import resource="classpath:spring/spring-jedis.xml" />
 	<import resource="classpath:dubbo/dubbo-consumer.xml" />
 	
 </beans>  

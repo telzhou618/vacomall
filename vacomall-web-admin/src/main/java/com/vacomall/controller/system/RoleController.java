@@ -9,7 +9,6 @@ import java.util.Map;
 import org.apache.commons.collections.MapUtils;
 import org.apache.commons.lang.ArrayUtils;
 import org.apache.commons.lang.StringUtils;
-import org.apache.commons.lang3.BooleanUtils;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -95,13 +94,8 @@ public class RoleController extends AdminController{
 	@ResponseBody
 	@RequiresPermissions("role:add")
 	@RequestMapping("/doAdd")
-	public Rest doAdd(SysRole sysRole,Boolean state){
+	public Rest doAdd(SysRole sysRole){
 		sysRole.setCreateTime(new Date());
-		if(BooleanUtils.isTrue(state)){
-			sysRole.setRoleState(1);
-		}else{
-			sysRole.setRoleState(0);
-		}
 		sysRoleService.insert(sysRole);
 		return Rest.ok();
 	}
@@ -132,12 +126,7 @@ public class RoleController extends AdminController{
 	@ResponseBody
 	@RequiresPermissions("role:edit")
 	@RequestMapping("/doEdit")
-	public Rest doEdit(SysRole sysRole,Boolean state){
-		if(BooleanUtils.isTrue(state)){
-			sysRole.setRoleState(1);
-		}else{
-			sysRole.setRoleState(0);
-		}
+	public Rest doEdit(SysRole sysRole){
 		sysRoleService.updateById(sysRole);
 		return Rest.ok();
 	}
