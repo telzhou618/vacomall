@@ -1,11 +1,21 @@
-package com.vacomall.email;
+package com.vacomall.email.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.MailException;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
+import org.springframework.stereotype.Service;
 
+import com.vacomall.email.EMailService;
+import com.vacomall.email.MailParam;
+/**
+ * 邮件发送服务实现
+ * Created by GaoJun.Zhou on 2017年9月11日.
+ * @version 1.0  
+ * Function: TODO
+ */
+@Service
 public class EMailServiceImpl implements EMailService {
 
     @Autowired

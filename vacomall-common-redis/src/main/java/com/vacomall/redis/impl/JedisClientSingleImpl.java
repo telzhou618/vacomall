@@ -1,11 +1,16 @@
-package com.vacomall.redis;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import redis.clients.jedis.Jedis;
-import redis.clients.jedis.JedisPool;
+package com.vacomall.redis.impl;
 
 import java.util.Set;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.vacomall.redis.JedisClient;
+
+import redis.clients.jedis.Jedis;
+import redis.clients.jedis.JedisPool;
+
+@Service
 public class JedisClientSingleImpl implements JedisClient{
 	
 	@Autowired

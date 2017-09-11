@@ -39,8 +39,4 @@
             </list>
         </property>
     </bean>
-    
-    <import resource="classpath:spring-jedis.xml"/>
-    <import resource="classpath:spring-mail.xml"/>
-	
 </beans>

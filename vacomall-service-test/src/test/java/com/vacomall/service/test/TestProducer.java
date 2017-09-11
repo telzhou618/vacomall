@@ -14,7 +14,13 @@ import org.springframework.test.context.junit4.AbstractJUnit4SpringContextTests;
 
 import com.vacomall.activemq.ProducerService;
 
-@ContextConfiguration(locations = { "classpath:spring-mq-producer.xml" })
+/**
+ * 生产者测试
+ * Created by GaoJun.Zhou on 2017年9月11日.
+ * @version 1.0  
+ * Function: TODO
+ */
+@ContextConfiguration(locations = {"classpath:spring-context.xml","classpath:spring-mq-producer.xml" })
 public class TestProducer extends AbstractJUnit4SpringContextTests {
 
 	@Autowired

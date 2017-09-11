@@ -9,7 +9,13 @@ import org.junit.Test;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.AbstractJUnit4SpringContextTests;
 
-@ContextConfiguration(locations = { "classpath:spring-mq-consumer.xml" })
+/**
+ * 消费者测试
+ * Created by GaoJun.Zhou on 2017年9月11日.
+ * @version 1.0  
+ * Function: TODO
+ */
+@ContextConfiguration(locations = {"classpath:spring-context.xml", "classpath:spring-mq-consumer.xml" })
 public class TestConsumer extends AbstractJUnit4SpringContextTests {
 
 	@Test

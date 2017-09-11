@@ -37,6 +37,7 @@
 		<constructor-arg name="port" value="${jedis.port}"></constructor-arg>
 		<constructor-arg name="poolConfig" ref="jedisPoolConfig"></constructor-arg>
 	</bean>
-	<bean id="jedisClient" class=" com.vacomall.redis.JedisClientSingleImpl" />
+	
+	<context:component-scan base-package="com.vacomall.redis"></context:component-scan>
 
 </beans>

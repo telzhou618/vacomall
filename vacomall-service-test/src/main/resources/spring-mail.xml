@@ -38,7 +38,7 @@
 		<!-- 线程池所使用的缓冲队列 -->
 		<property name="queueCapacity" value="100" />
 	</bean>
-
-	<bean id="emailService" class="com.vacomall.email.EMailServiceImpl" />
-
+	
+	<context:component-scan base-package="com.vacomall.email"></context:component-scan>
+	
 </beans>
