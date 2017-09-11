@@ -154,6 +154,12 @@
 				<artifactId>vacomall-common-service</artifactId>
 				<version>${vacomall.version}</version>
 			</dependency>
+			
+			<dependency>
+				<groupId>com.vacomall</groupId>
+				<artifactId>vacomall-common-activemq</artifactId>
+				<version>${vacomall.version}</version>
+			</dependency>
 
 			<!-- facade -->
 			<dependency>

@@ -23,6 +23,11 @@
 			<groupId>com.vacomall</groupId>
 			<artifactId>vacomall-common-email</artifactId>
 		</dependency>
+		
+		<dependency>
+			<groupId>com.vacomall</groupId>
+			<artifactId>vacomall-common-activemq</artifactId>
+		</dependency>
 
 		<dependency>
 			<groupId>junit</groupId>
