@@ -17,10 +17,10 @@ layui.define(['layer','form','upload'], function(exports){
 		},
 		pass : [ /^[\S]{6,12}$/, '密码必须6到12位，且不能出现空格' ],
 		
-		regPwd: function(value) {
+		eqPwd: function(value) {
 			//获取密码
 			var pwd = $("#password").val();
-			if(!new RegExp(pwd).test(value)) {
+			if(pwd!=value) {
 				return '两次输入的密码不一致';
 			}
 		},
