@@ -61,9 +61,7 @@
   </div>
 
 ### 最终实现效果
-前台:<hr>
 ![image](https://github.com/foreyer/vacomall/blob/master/imgs/f.png)
-后台:<hr>
 ![image](https://github.com/foreyer/vacomall/blob/master/imgs/b.png)
 
 ### 开发进度
