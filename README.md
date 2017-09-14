@@ -65,9 +65,8 @@
 ![image](https://github.com/foreyer/vacomall/blob/master/imgs/b.png)
 
 ### 开发参考
-1. zookeeper安装、伪分布式 http://blog.csdn.net/chengwenyao18/article/details/23611995
-2. Redis多端口、多实例 http://blog.csdn.net/rachel_luo/article/details/8858302
-3. disconf-web安装 http://disconf.readthedocs.io/zh_CN/latest/install/src/02.html
+
+disconf-web安装 http://disconf.readthedocs.io/zh_CN/latest/install/src/02.html
 
 ### 开发进度
 目前正在架构设计、框架搭建中...
