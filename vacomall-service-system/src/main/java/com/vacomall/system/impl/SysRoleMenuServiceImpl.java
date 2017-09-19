@@ -65,14 +65,12 @@ public class SysRoleMenuServiceImpl extends ServiceImpl<SysRoleMenuMapper, SysRo
 				new Column().column("deep"),
 				new Column().column("resource")
 		};
-		List<Map<String, Object>> list = sysMenuMapper.selectMaps(new EntityWrapper<SysMenu>().setSqlSelect(columns).eq("pid",pid).orderBy("sort"));
+		List<Map<String, Object>> list = sysMenuMapper.selectMaps(new EntityWrapper<SysMenu>().setSqlSelect(columns).eq("pid",pid).orderBy("code"));
 		for(Map<String, Object> map : list){
 			if(MapUtils.getIntValue(map, "deep") < 3){
 				map.put("children",selectAuthByRidAndPid(map.get("id").toString(),menuIds));
 			}
-			map.put("checked",menuIds.contains(map.get("id")));
-			map.put("leaf",MapUtils.getIntValue(map, "deep")>2);
-			map.put("expanded",MapUtils.getIntValue(map, "deep")<2);
+			map.put("checked",menuIds.contains(map.get("id"))?"checked":"");
 		}
 		return list;
 	}

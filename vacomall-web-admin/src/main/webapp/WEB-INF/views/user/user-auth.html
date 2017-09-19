@@ -1,9 +1,9 @@
-<#include "/common/layout.html"/>
+<#include "/common/layout_form.html"/>
 <@head>
 </@head>
 <@body>
 	<div class="x-body">
-        <form class="layui-form layui-form-pane" action="/user/doAuth" method="post">
+        <form class="layui-form layui-form-pane" action="/user/give/role" method="post">
         	 <input type="hidden" name="id" value="${sysUser.id}">
              <div class="layui-form-item">
                  <label for="L_title" class="layui-form-label">用户名</label>
@@ -30,16 +30,4 @@
     </div>
 </@body>
 <@footer>
-<script type="text/javascript">
-layui.use(['layer','form'], function(){
-	var $ = layui.jquery,
-  		form = layui.form;
-	  	//监听提交
-		form.on('submit(submit)', function(data){
-		  var values = data.field,
-	   		fm = data.form;
-	      	 return true;
-	      });
-		});
-</script>
 </@footer>

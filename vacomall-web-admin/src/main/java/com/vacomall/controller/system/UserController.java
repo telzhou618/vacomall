@@ -174,7 +174,13 @@ public class UserController extends AdminController{
 		return Rest.ok();
 	}
 	
-	@RequestMapping("/auth")
+	/**
+	 * 获取当前用户的角色
+	 * @param model
+	 * @param id
+	 * @return
+	 */
+	@RequestMapping("/get/role")
 	public String auth(Model model,String id){
 		
 		model.addAttribute("sysUser",sysUserService.selectById(id));
@@ -183,9 +189,16 @@ public class UserController extends AdminController{
 		return "user/user-auth";
 	}
 	
+	/**
+	 * 分配角色
+	 * @param model
+	 * @param id
+	 * @param roleId
+	 * @return
+	 */
 	@ResponseBody
-	@RequestMapping("/doAuth")
-	public String doAuth(Model model,String id,String[] roleId){
+	@RequestMapping("/give/role")
+	public Rest doAuth(Model model,String id,@RequestParam("roleId[]") String[] roleId){
 		sysUserRoleService.delete(new EntityWrapper<SysUserRole>().eq("userId", id));
 		if(ArrayUtils.isNotEmpty(roleId)){
 			for(String rid : roleId){
@@ -195,6 +208,6 @@ public class UserController extends AdminController{
 				sysUserRoleService.insert(ur);
 			}
 		}
-		return "OK!";
+		return Rest.ok();
 	}
 }

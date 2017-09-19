@@ -1,0 +1,57 @@
+<#include "/common/layout_form.html"/>
+<@head>
+</@head>
+<@body>
+	<div class="x-body">
+        <form class="layui-form layui-form-pane" action="/role/doAuth" method="post">
+        	 <input type="hidden" name="rid" value="${role.id}">
+             <div class="layui-form-item">
+                 <label for="L_title" class="layui-form-label">角色名称</label>
+                 <div class="layui-input-block">
+                     <input type="text" value="${role.roleName}" readonly="readonly" class="layui-input">
+                 </div>
+             </div>
+             <div>
+             	<table class="layui-table">
+             		<#list menuList as menu>
+             			<tr>
+             				<td>
+             				 <input type="checkbox" name="mid" title="${menu.text}" lay-skin="primary" value="${menu.id}" ${menu.checked}>
+             			   </td>
+             			   <td>
+             			   	<table class="table">
+             			   	    <#list menu.children as mu>
+             			   		<tr>
+             			   			<td>
+		             				  <input type="checkbox" name="mid" title="${mu.text}" lay-skin="primary" value="${mu.id}" ${mu.checked}>
+		             			    </td>
+		             			    <td>
+		             			    	<table class="table">
+			             			   		<tr>
+			             			   	      <#list mu.children as it>
+			             			   			<td>
+					             				  <input type="checkbox" name="mid" title="${it.text}" lay-skin="primary" value="${it.id}" ${it.checked}>
+					             			    </td>
+			             			   		   </#list>
+			             			   		</tr>
+			             			   	</table>
+		             			    </td>
+             			   		</tr>
+             			   		</#list>
+             			   	</table>
+             			   </td>
+             			</tr>
+             		</#list>
+             	</table>
+             </div>
+		     <div class="layui-form-item">
+			    <div class="layui-input-block">
+			      <button class="layui-btn" lay-submit lay-filter="submit">立即提交</button>
+			      <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+			    </div>
+			  </div>
+      </form>
+    </div>
+</@body>
+<@footer>
+</@footer>

@@ -57,6 +57,17 @@ layui.define(['layer','form','upload'], function(exports){
 	// 监听提交
 	form.on('submit(submit)', function(data) {
 		var values = data.field, fm = data.form;
+		//获取checkbox选中的值
+		var $ch = $("input:checkbox:checked");
+		var name = {};
+		var chvs = [];
+		if($ch && $ch[0]){
+			name = $ch[0].name;
+			$ch.each(function() {
+				chvs.push($(this).val());
+			});
+			values[name] = chvs;
+		}
 		var index = layer.load(1); // 换了种风格
 		$.post($(fm).attr('action'), values, function(data) {
 			layer.close(index);

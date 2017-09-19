@@ -150,13 +150,16 @@ public class RoleController extends AdminController{
 	/**
 	 * 获取指定角色的权限
 	 */
-	@RequestMapping("/menulist")
-	public List<Map<String, Object>> menulist(String rid){
-		if(StringUtils.isBlank(rid)){
+	@RequestMapping("/auth")
+	public String auth(String id,Model model){
+		if(StringUtils.isBlank(id)){
 			throw new RuntimeException("客户端传入的角色ID为空");
 		}
-		List<Object> list = sysRoleMenuService.selectObjs(new EntityWrapper<SysRoleMenu>().setSqlSelect("menuId").eq("roleId", rid));
-		return sysRoleMenuService.selectAuthByRidAndPid("0",list);
+		List<Object> list = sysRoleMenuService.selectObjs(new EntityWrapper<SysRoleMenu>().setSqlSelect("menuId").eq("roleId", id));
+	    List<Map<String, Object>> menuList = sysRoleMenuService.selectAuthByRidAndPid("0",list);
+	    model.addAttribute("role",sysRoleService.selectById(id));
+	    model.addAttribute("menuList", menuList);
+	    return "role/role-auth";
 	}
 	
 	/**
@@ -165,9 +168,10 @@ public class RoleController extends AdminController{
 	 * @param menuIds
 	 * @return
 	 */
+	@ResponseBody
 	@RequiresPermissions("role:auth")
 	@RequestMapping("/doAuth")
-	public Rest doAuth(String rid, String[] menuIds){
+	public Rest doAuth(String rid, @RequestParam("mid[]") String[] menuIds){
 		sysRoleMenuService.updateAuth(rid,menuIds);
 		return Rest.ok();
 	}
