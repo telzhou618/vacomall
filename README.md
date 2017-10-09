@@ -61,8 +61,8 @@
   </div>
   
 ### 最终实现效果
-![image](https://github.com/foreyer/vacomall/blob/master/imgs/f.png)
-![image](https://github.com/foreyer/vacomall/blob/master/imgs/b.png)
+![image](https://github.com/zhougaojun618/vacomall/blob/master/imgs/f.png)
+![image](https://github.com/zhougaojun618/vacomall/blob/master/imgs/b.png)
 
 ### 开发参考
 
