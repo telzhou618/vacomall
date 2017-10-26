@@ -66,7 +66,8 @@
 
 ### 开发参考
 
-disconf-web安装 http://disconf.readthedocs.io/zh_CN/latest/install/src/02.html
+1. disconf-web安装 http://disconf.readthedocs.io/zh_CN/latest/install/src/02.html
+2. 开发依赖包 https://github.com/zhougaojun618/vacomall-server
 
 ### 开发进度
 目前正在架构设计、框架搭建中...
