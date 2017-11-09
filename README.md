@@ -74,8 +74,8 @@
 2. 启动三个ZooKeeper服务
 ```
  /zookeeper-3.3.6-1/bin/zkServer.cmd // port 2181
- /zookeeper-3.3.6-1/bin/zkServer.cmd // port 2182
- /zookeeper-3.3.6-1/bin/zkServer.cmd // port 2183
+ /zookeeper-3.3.6-2/bin/zkServer.cmd // port 2182
+ /zookeeper-3.3.6-3/bin/zkServer.cmd // port 2183
 ```
 3. 部署disconf服务，官网下载disconf，部署在Tomcat容器下。
 4. 下载nginx,依照disconf的要求配置好nginx，参考http://disconf.readthedocs.io/zh_CN/latest/install/src/02.html
