@@ -83,17 +83,19 @@
 ```
 127.0.0.1 disconf.com
 ```
-6. 运行服务项目
+6.上传项目所需配置文件到disconf 如下图
+![image](https://github.com/zhougaojun618/vacomall/blob/master/imgs/disconf.png)
+7. 运行服务项目
 ```
 vacomall-service-system
 vacomall-service-goods 直接执行DubboProvider.java中main方法
 ```
-7. 运行Web项目
+8. 运行Web项目
 ```
 vacomall-web-admin项目，端口8081，上下文"/"
 vacomall-web-shop项目，端口8080,上下文"/"
 ```
-8. 访问前台:http://localhost:8080, 访问前台: http://localhost:8081
+9. 访问前台:http://localhost:8080, 访问前台: http://localhost:8081
 
 ### 最终实现效果
 ![image](https://github.com/zhougaojun618/vacomall/blob/master/imgs/f.png)
