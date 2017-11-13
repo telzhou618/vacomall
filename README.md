@@ -83,7 +83,7 @@
 ```
 127.0.0.1 disconf.com
 ```
-6.上传项目所需配置文件到disconf 如下图
+6.访问http://disconf.com, 上传项目所需配置文件到disconf 如下图
 ![image](https://github.com/zhougaojun618/vacomall/blob/master/imgs/disconf.png)
 7. 运行服务项目
 ```
